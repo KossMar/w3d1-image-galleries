@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ScrollViewController.h
 //  scroll-view-image-galleries
 //
 //  Created by Mar Koss on 2017-10-16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController 
-
+@interface ScrollViewController : UIScrollView 
 
 @end
-

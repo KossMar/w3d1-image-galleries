@@ -51,7 +51,6 @@
 		0D2F0C461F9553F9004E7450 /* scroll-view-image-galleriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "scroll-view-image-galleriesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2F0C4A1F9553F9004E7450 /* scroll_view_image_galleriesUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = scroll_view_image_galleriesUITests.m; sourceTree = "<group>"; };
 		0D2F0C4C1F9553F9004E7450 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0D2F0C581F956268004E7450 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +110,6 @@
 				0D2F0C311F9553F9004E7450 /* LaunchScreen.storyboard */,
 				0D2F0C341F9553F9004E7450 /* Info.plist */,
 				0D2F0C351F9553F9004E7450 /* main.m */,
-				0D2F0C581F956268004E7450 /* Images.xcassets */,
 			);
 			path = "scroll-view-image-galleries";
 			sourceTree = "<group>";
