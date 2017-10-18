@@ -7,9 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "SecondViewController.h"
 
 @interface ViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic) UIPageControl *pageControl;
 @property (nonatomic) UIImageView *lighthouseOne;
 @property (nonatomic) UIImageView *lighthouseTwo;
 @property (nonatomic) UIImageView *lighthouseThree;
@@ -19,12 +21,65 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
+    
+
+//    self.scrollView.alwaysBounceHorizontal = NO;
+    
     [super viewDidLoad];
+    
+    self.scrollView.delegate = self;
+
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectZero];
+    self.pageControl.translatesAutoresizingMaskIntoConstraints = NO;
+    self.pageControl.numberOfPages = 2;
+    self.pageControl.currentPage = 0;
+    self.pageControl.backgroundColor = [UIColor clearColor];
+    [self.pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:self.pageControl];
+    
+    [NSLayoutConstraint constraintWithItem:self.pageControl
+                                 attribute:NSLayoutAttributeLeading
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view
+                                 attribute:NSLayoutAttributeLeading
+                                multiplier:1.0
+                                  constant:0.0].active = YES;
+    // bottom
+    [NSLayoutConstraint constraintWithItem:self.pageControl
+                                 attribute:NSLayoutAttributeBottom
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view
+                                 attribute:NSLayoutAttributeBottom
+                                multiplier:1.0
+                                  constant:0.0].active = YES;
+    // height
+    [NSLayoutConstraint constraintWithItem:self.pageControl
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeNotAnAttribute
+                                multiplier:1.0
+                                  constant:20.0].active = YES;
+    // width
+    [NSLayoutConstraint constraintWithItem:self.pageControl
+                                 attribute:NSLayoutAttributeWidth
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view
+                                 attribute:NSLayoutAttributeWidth
+                                multiplier:1.0
+                                  constant:0.0].active = YES;
+    
+    
+    
     self.lighthouseOne = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.lighthouseOne.translatesAutoresizingMaskIntoConstraints = NO;
     UIImage * image = [UIImage imageNamed:@"Lighthouse-in-Field"];
     self.lighthouseOne.image = image;
     [self.lighthouseOne setContentMode:UIViewContentModeScaleAspectFit];
+    self.lighthouseOne.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapping:)];
+    [singleTap setNumberOfTapsRequired:1];
+    [self.lighthouseOne addGestureRecognizer:singleTap];
     [self.scrollView addSubview:self.lighthouseOne];
     
     
@@ -74,7 +129,11 @@
     self.lighthouseTwo = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.lighthouseTwo.translatesAutoresizingMaskIntoConstraints = NO;
     self.lighthouseTwo.image = [UIImage imageNamed:@"Lighthouse-night"];
+    self.lighthouseTwo.userInteractionEnabled = YES;
     [self.lighthouseTwo setContentMode:UIViewContentModeScaleAspectFit];
+    UITapGestureRecognizer *singleTap2 =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapping:)];
+    [singleTap2 setNumberOfTapsRequired:1];
+    [self.lighthouseTwo addGestureRecognizer:singleTap2];
     [self.scrollView addSubview:self.lighthouseTwo];
     
     
@@ -132,6 +191,10 @@
     self.lighthouseThree.translatesAutoresizingMaskIntoConstraints = NO;
     self.lighthouseThree.image = [UIImage imageNamed:@"Lighthouse"];
     [self.lighthouseThree setContentMode:UIViewContentModeScaleAspectFit];
+    self.lighthouseThree.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap3 =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapping:)];
+    [singleTap3 setNumberOfTapsRequired:1];
+    [self.lighthouseThree addGestureRecognizer:singleTap3];
     [self.scrollView addSubview:self.lighthouseThree];
     
 
@@ -186,18 +249,48 @@
                                 multiplier:1.0
                                   constant:0.0].active = YES;
     
-
-//    [[]
-
+}
     
-    
+//- (IBAction)changePage:(id)sender {
+//    CGFloat x = self.pageControl.currentPage * self.scrollView.frame.size.width;
+//    [self.scrollView setContentOffset:CGPointMake(x, 0) animated:YES];
+//}
+//
+//-(void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView  {
+//    NSInteger pageNumber = roundf(scrollView.contentOffset.x / (scrollView.frame.size.width));
+//    self.pageControl.currentPage = pageNumber;
+//}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    float fractionalPage = (self.scrollView.contentOffset.x / pageWidth);
+    NSInteger page = lround(fractionalPage);
+    self.pageControl.currentPage = page;
+
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)singleTapping:(UIGestureRecognizer*)recognizer {
+    
+    
+    [self performSegueWithIdentifier:@"detailViewSegue" sender:recognizer];
+    
+    NSLog(@"image clicked");
 }
 
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIGestureRecognizer *)sender {
+    if([segue.identifier isEqualToString:@"detailViewSegue"]) {
+     //   UIGestureRecognizer *gestureRecognizer = (UIGestureRecognizer *) sender;
+        UIImageView *imageView = (UIImageView *) sender.view;
+
+        SecondViewController *controller = (SecondViewController *)segue.destinationViewController;
+        controller.image = imageView.image;
+    }
+}
+
+-(void)changePage:(UIPageControl*)sender{
+    
+}
 @end

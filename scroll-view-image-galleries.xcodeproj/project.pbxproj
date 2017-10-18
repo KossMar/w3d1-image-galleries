@@ -15,6 +15,7 @@
 		0D2F0C361F9553F9004E7450 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2F0C351F9553F9004E7450 /* main.m */; };
 		0D2F0C401F9553F9004E7450 /* scroll_view_image_galleriesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2F0C3F1F9553F9004E7450 /* scroll_view_image_galleriesTests.m */; };
 		0D2F0C4B1F9553F9004E7450 /* scroll_view_image_galleriesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2F0C4A1F9553F9004E7450 /* scroll_view_image_galleriesUITests.m */; };
+		0D2F0C611F959E6D004E7450 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2F0C601F959E6D004E7450 /* SecondViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		0D2F0C461F9553F9004E7450 /* scroll-view-image-galleriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "scroll-view-image-galleriesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2F0C4A1F9553F9004E7450 /* scroll_view_image_galleriesUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = scroll_view_image_galleriesUITests.m; sourceTree = "<group>"; };
 		0D2F0C4C1F9553F9004E7450 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D2F0C5F1F959E6D004E7450 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		0D2F0C601F959E6D004E7450 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				0D2F0C271F9553F9004E7450 /* AppDelegate.m */,
 				0D2F0C291F9553F9004E7450 /* ViewController.h */,
 				0D2F0C2A1F9553F9004E7450 /* ViewController.m */,
+				0D2F0C5F1F959E6D004E7450 /* SecondViewController.h */,
+				0D2F0C601F959E6D004E7450 /* SecondViewController.m */,
 				0D2F0C2C1F9553F9004E7450 /* Main.storyboard */,
 				0D2F0C2F1F9553F9004E7450 /* Assets.xcassets */,
 				0D2F0C311F9553F9004E7450 /* LaunchScreen.storyboard */,
@@ -265,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D2F0C611F959E6D004E7450 /* SecondViewController.m in Sources */,
 				0D2F0C2B1F9553F9004E7450 /* ViewController.m in Sources */,
 				0D2F0C361F9553F9004E7450 /* main.m in Sources */,
 				0D2F0C281F9553F9004E7450 /* AppDelegate.m in Sources */,
